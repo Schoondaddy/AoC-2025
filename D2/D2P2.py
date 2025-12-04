@@ -8,7 +8,7 @@ for idrange in data:
         id = str(id)
         for i in range(len(id)//2):
             div, rem = divmod(len(id), i + 1)
-            if rem == 0 and id[0 : i +1] * div == id:
+            if rem == 0 and id[0 : i + 1] * div == id:
                 summation += int(id) 
                 break
 print(summation)
