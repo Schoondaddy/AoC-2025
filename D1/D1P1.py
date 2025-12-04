@@ -1,8 +1,8 @@
-input = open("input.txt", "r").read().split("\n")
+data = open("input.txt", "r").read().split("\n")
 
 rotation = 50
 count = 0
-for move in input:
+for move in data:
     dir = move[0]
     n = int(move[1:])
     

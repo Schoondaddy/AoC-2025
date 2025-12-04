@@ -1,12 +1,9 @@
-## Tried: 6195, 6076, 5735
-input = open("input.txt", "r").read().split("\n")
+data = open("input.txt", "r").read().split("\n")
 
 rotation = 50
 count = 0
-for move in input:
+for move in data:
     n = int(move[1:]) * (-1 if move[0] == "L" else 1)
-
-    
     
     if (rotation == 0) & (n < 0):
         count -= 1
