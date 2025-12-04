@@ -1,25 +1,25 @@
-data = open("input.txt", "r").read().split("\n")
-## Tried: 6195, 6076
+## Tried: 6195, 6076, 5735
+input = open("input.txt", "r").read().split("\n")
+
 rotation = 50
 count = 0
-for move in data:
-    dir = move[0]
-    n = int(move[1:])
+for move in input:
+    n = int(move[1:]) * (-1 if move[0] == "L" else 1)
+
     
-    if dir == "L":
-        n *= -1
     
     if (rotation == 0) & (n < 0):
         count -= 1
-    rotation += n
-    if rotation >= 100:
-        count += abs(rotation//100)
-    elif rotation < 0:
-        count += abs(rotation//100)
-    elif rotation %100 == 0:
-        count += 1
-    rotation = rotation % 100
     
-
+    rotation += n
+    
+    if rotation == 0:
+        count += 1
+    elif (rotation < 0) or (rotation >= 100):
+        count += abs(rotation//100)
+        if (rotation % 100 == 0) & (rotation < 0):
+            count += 1
+    
+    rotation %= 100
     
 print(count)
