@@ -19,7 +19,8 @@ while len(data) != 0:
     data.pop(0)
 
 dists = dict(sorted(dists.items()))
-for points in list(dists.values())[:1000]:
+last_connection = None
+for points in list(dists.values()):
     for group in list(groups.items()):
         if points[0] in group[1]:
             for group2 in groups.items():
@@ -27,11 +28,11 @@ for points in list(dists.values())[:1000]:
                     if group == group2:
                         break
                     groups[group2[0]] += groups.pop(group[0])
+                    if len(group2[1]) == 1000:
+                        last_connection = points
                     break
             break
-            
-group_count = [len(group[1]) for group in groups.items()]
-print(group_count)
-group_count.sort(reverse= True)
+    if last_connection != None:
+        break
 
-print(group_count[0] * group_count[1] * group_count[2])
+print(last_connection[0][0] * last_connection[1][0])
