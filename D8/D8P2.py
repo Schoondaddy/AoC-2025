@@ -1,5 +1,3 @@
-import math
-
 def dist(p1, p2):
     return sum([(p1[x] - p2[x])**2 for x in range(3)])
 
